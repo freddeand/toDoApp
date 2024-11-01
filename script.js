@@ -60,25 +60,26 @@ function addNew() {
 }
 
 function showTasks() {
-    let allTasksText = "Alla uppgifter:\n\n";
-    tasks.forEach(task => {
-        allTasksText += `${task.id}: ${task.description} ${task.done ? "KLAR": "INTE KLAR"}\n`;
-    })
+  let allTasksText = "Alla uppgifter:\n\n";
+  tasks.forEach((task) => {
+    allTasksText += `${task.id}: ${task.description} ${
+      task.done ? "KLAR" : "INTE KLAR"
+    }\n`;
+  });
 
-    alert(allTasksText);
+  alert(allTasksText);
 }
 
-
 function markReady() {
-    let id = prompt("Välj task id att ta klarmarkera");
+  let id = prompt("Välj task id att ta klarmarkera");
 
-    let task = tasks.find((task)=> task.id == id);
-    if (task) {
-        task.done = true;
-        alert(`${id} klarmarkerad.`)
-    } else {
-        alert(`Hittade inte id ${id}`);
-    }
+  let task = tasks.find((task) => task.id == id);
+  if (task) {
+    task.done = true;
+    alert(`${id} klarmarkerad.`);
+  } else {
+    alert(`Hittade inte id ${id}`);
+  }
 }
 
 function removeTask() {

@@ -3,7 +3,7 @@ function addNew() {
     if (taskDescription) {
         const newTask = {
             id: generalId(),
-            description: beskrivning,
+            description: taskDescription,
             done: false
         };
         tasks.push(newTask);

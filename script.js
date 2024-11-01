@@ -58,3 +58,12 @@ function addNew() {
   }
   console.log(tasks);
 }
+
+function showTasks() {
+    let allTasksText = "Alla uppgifter:\n\n";
+    tasks.forEach(task => {
+        allTasksText += `${task.id}: ${task.description} ${task.done ? "KLAR": "INTE KLAR"}\n`;
+    })
+
+    alert(allTasksText);
+}

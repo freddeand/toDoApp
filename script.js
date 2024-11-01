@@ -10,6 +10,12 @@ function showMenu() {
         "Hej och välkommen till din ToDo\n Vad vill du göra?\n 1.Lägga till uppgifter\n 2.Visa aktuella uppgifter\n 3.Markera uppgifter som klara.\n 4.Ta bort uppgifter.\n 5.Avsluta"
       )
     );
+
+    if (menu === null) {
+      console.log("Avbröt programmet");
+      return;
+    }
+
     console.log(menu, menuText);
     if (isNaN(menu)) {
       alert("Skriv in ett siffra.");
@@ -28,8 +34,8 @@ function showMenu() {
           removeTask();
           break;
         case 5:
-          console.log("Avlsutat ToDo");
-          alert("Avslutat ToDo");
+          console.log("Avlsutat To-Do programmet");
+          alert("Avslutat To-Do programmet");
           break;
         default:
           alert("Skriv in en siffra mellan 1-5");
@@ -43,6 +49,12 @@ function generalId() {
 }
 function addNew() {
   const taskDescription = prompt("Ange beskrivning för uppgiften: ");
+
+  if (taskDescription === null) {
+    console.log("Avbröt programmet.")
+    return;
+  }
+
   if (taskDescription) {
     const newTask = {
       id: generalId(),
@@ -73,6 +85,11 @@ function showTasks() {
 function markReady() {
   let id = prompt("Välj task id att ta klarmarkera");
 
+  if (id === null) {
+    console.log("Avbröt programmet.");
+    return;
+  }
+
   let task = tasks.find((task) => task.id == id);
   if (task) {
     task.done = true;
@@ -92,6 +109,10 @@ function removeTask() {
 
   let taskId = prompt(`${showTaskId}\nAnge ID för uppgiften du vill ta bort:`);
   let index = tasks.findIndex((task) => task.id == taskId);
+
+  if (taskId === null) {
+    console.log("Avbröt programmet.")
+  }
 
   if (index !== -1) {
     // Check if task exists

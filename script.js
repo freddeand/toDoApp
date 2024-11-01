@@ -11,10 +11,12 @@ function showMenu() {
       )
     );
 
-    if (menu === null) {
+    if (menu === 0) {
       console.log("Avbröt programmet");
+      alert("Avbröt programmet");
       return;
     }
+    console.log(menu);
 
     console.log(menu, menuText);
     if (isNaN(menu)) {
@@ -34,14 +36,14 @@ function showMenu() {
           removeTask();
           break;
         case 5:
-          console.log("Avlsutat To-Do programmet");
+          console.log("Avslutat To-Do programmet");
           alert("Avslutat To-Do programmet");
           break;
         default:
           alert("Skriv in en siffra mellan 1-5");
       }
     }
-  } while (menu !== 5);
+  } while (menu !== 5 && menu !== 0);
 }
 
 function generalId() {
@@ -52,6 +54,7 @@ function addNew() {
 
   if (taskDescription === null) {
     console.log("Avbröt programmet.")
+    alert("Avbröt programmet.");
     return;
   }
 
@@ -87,6 +90,7 @@ function markReady() {
 
   if (id === null) {
     console.log("Avbröt programmet.");
+    alert("Avbröt programmet.");
     return;
   }
 
@@ -112,6 +116,7 @@ function removeTask() {
 
   if (taskId === null) {
     console.log("Avbröt programmet.")
+    alert("Avbröt programmet.");
   }
 
   if (index !== -1) {

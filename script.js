@@ -67,3 +67,16 @@ function showTasks() {
 
     alert(allTasksText);
 }
+
+
+function markReady() {
+    let id = prompt("Välj task id att ta klarmarkera");
+
+    let task = tasks.find((task)=> task.id == id);
+    if (task) {
+        task.done = true;
+        alert(`${id} klarmarkerad.`)
+    } else {
+        alert(`Hittade inte id ${id}`);
+    }
+}

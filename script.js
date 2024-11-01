@@ -1,5 +1,5 @@
 let tasks = []
 
-function showMenu() {
-    prompt("Meny");
+function generalId() {
+    return Math.floor(Math.random() * 10000);
 }

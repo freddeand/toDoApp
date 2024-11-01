@@ -1,3 +1,5 @@
+let tasks = [];
+
 function showMenu() {
   let menu;
   let menuText =
@@ -34,4 +36,25 @@ function showMenu() {
       }
     }
   } while (menu !== 5);
+}
+
+function generalId() {
+  return Math.floor(Math.random() * 10000);
+}
+function addNew() {
+  const taskDescription = prompt("Ange beskrivning för uppgiften: ");
+  if (taskDescription) {
+    const newTask = {
+      id: generalId(),
+      description: taskDescription,
+      done: false,
+    };
+    tasks.push(newTask);
+    console.log("Uppgiften har lagts till.");
+    alert("Uppgiften har lagts till.");
+  } else {
+    console.log("Ingen beskrivning. Försök igen.");
+    alert("Ingen beskrivning. Försök igen.");
+  }
+  console.log(tasks);
 }

@@ -3,24 +3,19 @@ let tasks = [];
 function showMenu() {
   let menu;
   let menuText =
-    "Hej och välkommen till din ToDo\n Vad vill du göra?\n 1.Lägga till uppgifter\n 2.Visa aktuella uppgifter\n 3.Markera uppgifter som klara.\n 4.Ta bort uppgifter.\n 5.Avsluta";
+    "\nHej och välkommen till din ToDo\n Vad vill du göra?\n 1.Lägga till uppgifter\n 2.Visa aktuella uppgifter\n 3.Markera uppgifter som klara.\n 4.Ta bort uppgifter.\n 5.Avsluta";
   do {
-    menu = Number(
-      prompt(
-        "Hej och välkommen till din ToDo\n Vad vill du göra?\n 1.Lägga till uppgifter\n 2.Visa aktuella uppgifter\n 3.Markera uppgifter som klara.\n 4.Ta bort uppgifter.\n 5.Avsluta"
-      )
-    );
+    menu = Number(prompt(menuText));
 
     if (menu === 0) {
       console.log("Avbröt programmet");
       alert("Avbröt programmet");
       return;
     }
-    console.log(menu);
 
-    console.log(menu, menuText);
     if (isNaN(menu)) {
-      alert("Skriv in ett siffra.");
+      menuText =
+        "Hej igen! Du måste skriva in en siffra mellan 1-5.\n" + menuText;
     } else {
       switch (menu) {
         case 1:
@@ -53,7 +48,7 @@ function addNew() {
   const taskDescription = prompt("Ange beskrivning för uppgiften: ");
 
   if (taskDescription === null) {
-    console.log("Avbröt programmet.")
+    console.log("Avbröt programmet.");
     alert("Avbröt programmet.");
     return;
   }
@@ -115,7 +110,7 @@ function removeTask() {
   let index = tasks.findIndex((task) => task.id == taskId);
 
   if (taskId === null) {
-    console.log("Avbröt programmet.")
+    console.log("Avbröt programmet.");
     alert("Avbröt programmet.");
   }
 

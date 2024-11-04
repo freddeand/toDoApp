@@ -3,8 +3,9 @@ let tasks = [];
 
 function showMenu() {
   let menu;
-  let menuText =
-    "\nHej och välkommen till din ToDo\n Vad vill du göra?\n 1.Lägga till uppgifter\n 2.Visa aktuella uppgifter\n 3.Markera uppgifter som klara.\n 4.Ta bort uppgifter.\n 5.Avsluta";
+  const originalMenuText =
+    "Hej och välkommen till din ToDo\n Vad vill du göra?\n 1.Lägga till uppgifter\n 2.Visa aktuella uppgifter\n 3.Markera uppgifter som klara.\n 4.Ta bort uppgifter.\n 5.Avsluta";
+  let menuText = originalMenuText;
   do {
     menu = Number(prompt(menuText));
 
@@ -17,7 +18,8 @@ function showMenu() {
 
     if (isNaN(menu)) {
       menuText =
-        "Hej igen! Du måste skriva in en siffra mellan 1-5.\n" + menuText;
+        "Hej igen! Du måste skriva in en siffra mellan 1-5.\n" +
+        originalMenuText;
     } else {
       switch (menu) {
         case 1:
@@ -39,6 +41,7 @@ function showMenu() {
         default:
           alert("Skriv in en siffra mellan 1-5");
       }
+      menuText = originalMenuText; // restores the menuText to original if your input isnt a number.
     }
   } while (menu !== 5 && menu !== 0);
 }
@@ -111,7 +114,7 @@ function markReady() {
     alert(`Hittade inte id ${id}`);
   }
 }
-
+// removes the task based on ID.
 function removeTask() {
   let showTaskId = "Alla uppgifter:\n\n";
   tasks.forEach((task) => {

@@ -7,14 +7,20 @@ function showMenu() {
     "Hej och välkommen till din ToDo\n Vad vill du göra?\n 1.Lägga till uppgifter\n 2.Visa aktuella uppgifter\n 3.Markera uppgifter som klara.\n 4.Ta bort uppgifter.\n 5.Avsluta";
   let menuText = originalMenuText;
   do {
-    menu = Number(prompt(menuText));
+    let inputByUser = prompt(menuText);
 
     // Code for when a user presses the cancel button
-    if (menu === 0) {
-      console.log("Avbröt programmet");
-      alert("Avbröt programmet");
+    if (inputByUser === null) {
+      console.log("Avslutat To-Do programmet");
+      alert("Avslutat To-Do programmet");
       return;
     }
+    if (inputByUser.trim() === "") {
+      alert("Du måste skriva in en siffra mellan 1-5.");
+      continue; // Go back to the start of the loop
+    }
+
+    menu = Number(inputByUser);
 
     if (isNaN(menu)) {
       menuText =
@@ -43,7 +49,7 @@ function showMenu() {
       }
       menuText = originalMenuText; // restores the menuText to original if your input isnt a number.
     }
-  } while (menu !== 5 && menu !== 0);
+  } while (menu !== 5);
 }
 
 // Generates a random number between 0-10000

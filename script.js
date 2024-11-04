@@ -1,3 +1,4 @@
+// Array for all the tasks
 let tasks = [];
 
 function showMenu() {
@@ -7,6 +8,7 @@ function showMenu() {
   do {
     menu = Number(prompt(menuText));
 
+    // Code for when a user presses the cancel button
     if (menu === 0) {
       console.log("Avbröt programmet");
       alert("Avbröt programmet");
@@ -41,9 +43,12 @@ function showMenu() {
   } while (menu !== 5 && menu !== 0);
 }
 
+// Generates a random number between 0-10000
 function generalId() {
   return Math.floor(Math.random() * 10000);
 }
+
+// Function for when a user adds a new task
 function addNew() {
   const taskDescription = prompt("Ange beskrivning för uppgiften: ");
 
@@ -53,12 +58,15 @@ function addNew() {
     return;
   }
 
+  // Object for the new task, holds the ID, the task and if the task is done or not
   if (taskDescription) {
     const newTask = {
       id: generalId(),
       description: taskDescription,
       done: false,
     };
+
+    // Pushes the new task into the array, and has an error code if the user doesn't add a description
     tasks.push(newTask);
     console.log("Uppgiften har lagts till.");
     alert("Uppgiften har lagts till.");

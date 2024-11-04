@@ -129,8 +129,7 @@ function removeTask() {
   }
 
   if (index !== -1) {
-    // Check if task exists
-    tasks.splice(index, 1); // Remove the task
+    tasks.splice(index, 1);
     console.log(`Uppgiften med ID ${taskId} har tagits bort.`);
     alert(`Uppgiften med ID ${taskId} har tagits bort.`);
   } else {

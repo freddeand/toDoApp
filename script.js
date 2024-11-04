@@ -81,7 +81,13 @@ function showTasks() {
 }
 
 function markReady() {
-  let id = prompt("Välj task id att ta klarmarkera");
+  let showTaskId = "Alla uppgifter:\n\n";
+  tasks.forEach((task) => {
+    showTaskId += `${task.id}: ${task.description} ${
+      task.done ? "KLAR" : "INTE KLAR"
+    }\n`;
+  });
+  let id = prompt(`${showTaskId}\nVälj task id att ta klarmarkera`);
 
   if (id === null) {
     console.log("Avbröt programmet.");

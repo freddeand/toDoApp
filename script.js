@@ -78,6 +78,7 @@ function addNew() {
     // Pushes the new task into the array, and has an error code if the user doesn't add a description
     tasks.push(newTask);
     console.log("Uppgiften har lagts till.");
+    console.log(newTask);
     alert("Uppgiften har lagts till.");
   } else {
     console.log("Ingen beskrivning. Försök igen.");

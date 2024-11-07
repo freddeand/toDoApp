@@ -1,23 +1,31 @@
 let tasks = [];
+let userInput = document.getElementById("text-form");
+let addBtn = document.getElementById("submit");
+let createP = document.createElement("p");
+let divBox = document.getElementsByClassName("empty-box");
+
+console.log(userInput);
+console.log(addBtn);
+
+addBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  let createP = document.createElement("p");
+  let taskDescription = userInput.value;
+  addNew(taskDescription, createP);
+});
 
 function generalId() {
   return Math.floor(Math.random() * 10000);
 }
-function addNew() {
-  const taskDescription = prompt("Ange beskrivning för uppgiften: ");
+function addNew(taskDescription) {
+  const newTask = {
+    id: generalId(),
+    description: taskDescription,
+    done: false,
 
-  if (taskDescription) {
-    const newTask = {
-      id: generalId(),
-      description: taskDescription,
-      done: false,
-    };
-    tasks.push(newTask);
-    console.log("Uppgiften har lagts till.");
-  } else {
-    console.log("Ingen beskrivning. Försök igen.");
-  }
-  console.log(tasks);
+    // console.log(tasks);
+  };
+  tasks.push(newTask);
 }
 
 function showTasks() {

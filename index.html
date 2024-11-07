@@ -3,19 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do Applikation</title>
+    <title>To-Do List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      #taskList {
+        margin-top: 20px;
+        list-style-type: none;
+        padding: 0;
+      }
+      #taskList li {
+        background-color: #f0f0f0;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+      #taskList li button {
+        background-color: #ff5c5c;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+      #taskList li button:hover {
+        background-color: #e04b4b;
+      }
+    </style>
   </head>
   <body>
-    <h1>To-Do Applikation</h1>
-    <button onclick="showMenu()">Start</button>
-    <h2>Instruktioner</h2>
-    <p>Det här är en to-do applikation.</p>
-    <p>Detta är vad du kan göra i denna applikation</p>
-    <li>1. Lägga till uppgifter</li>
-    <li>2. Visa alla uppgifter</li>
-    <li>3. Markera en uppgift som klar</li>
-    <li>4. Ta bort en uppgift</li>
-    <li>Eller avsluta programmet.</li>
-    <script src="script.js" defer></script>
+    <h1>To-Do List</h1>
+
+    <form id="taskForm">
+      <label for="task">New Task:</label>
+      <input type="text" id="task" name="task" required />
+      <button type="submit">Add Task</button>
+    </form>
+
+    <ul id="taskList"></ul>
   </body>
 </html>

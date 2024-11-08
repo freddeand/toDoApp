@@ -54,8 +54,8 @@ function renderTask(task) {
   removeBtn.innerText = "Ta bort uppgift";
   removeBtn.style.margin = "10px";
   removeBtn.addEventListener("click", function () {
-    let removeYes = document.createElement("button");
-    let removeNo = document.createElement("button");
+    let removeYes = document.createElement("button"); // knapp för att tabort om du trycker på tabort uppgift.
+    let removeNo = document.createElement("button"); // knapp för att återgå till uppgiften.
     removeYes.innerText = "ja";
     removeNo.innerText = "nej";
     addPara.appendChild(removeYes);
@@ -76,9 +76,6 @@ function renderTask(task) {
       addPara.removeChild(removeYes);
       addPara.removeChild(removeNo);
     });
-    // taskContainer.removeChild(addPara);
-    // tasks = tasks.filter((t) => t.id !== task.id);
-    // saveTasks(); // Uppdatera localStorage efter borttagning
   });
 
   // "Färdig markera"-knapp

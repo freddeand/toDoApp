@@ -1,7 +1,202 @@
+/* Not Done state */
 .notDone {
     color: red;
-}
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 8px;
+    background-color: rgba(255, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .notDone:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .notDone::before {
+    content: "❌"; /* Cross icon */
+    color: red;
+    font-size: 1.2rem;
+  }
+  
+  /* Done state */
+  .done {
+    background-color: rgba(0, 102, 204, 0.2); /* Light blue background */
+    color: #0066cc; /* Darker blue text */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    border: 1px solid #0066cc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .done:hover {
+    background-color: rgba(0, 102, 204, 0.3);
+    transform: scale(1.05);
+  }
+  
+  .done::before {
+    content: "✔️"; /* Checkmark icon */
+    color: #0066cc;
+    font-size: 1.2rem;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .notDone, .done {
+    animation: fadeIn 0.5s ease;
+  }
 
-.done {
-    color: blue;
-}
+/* Reset some default styles */
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    color: #333;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  /* Main container styling */
+  #div-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* Form and input styling */
+  form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-direction: row;
+  }
+  
+  #input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  #input:focus {
+    border-color: #4e54c8;
+    box-shadow: 0px 0px 8px rgba(78, 84, 200, 0.3);
+  }
+  
+  #addBTn {
+    padding: 10px 15px;
+    background-color: #4e54c8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #addBTn:hover {
+    background-color: #3a3f91;
+  }
+  
+  /* Task list items */
+  p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  button:first-of-type {
+    background-color: #ff6b6b; /* Delete button */
+  }
+  
+  button:last-of-type {
+    background-color: #1dd1a1; /* Complete button */
+  }
+  
+  /* Animation */
+  #div-container {
+    animation: fadeIn 0.8s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2rem;
+    }
+  
+    form {
+      flex-direction: column;
+    }
+  
+    #addBTn {
+      width: 100%;
+    }
+  
+    p {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    button {
+      width: 100%;
+    }
+  }
+  

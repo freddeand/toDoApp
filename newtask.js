@@ -11,7 +11,7 @@ function generalId() {
 // Kontrollera om uppgifter finns sparade i localStorage när sidan laddas
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Loading tasks from localStorage:", tasks); // Kontrollera vad som hämtas
-  tasks.forEach((task) => renderTask(task)); // Rendera varje sparad uppgift vid sidladdning
+  tasks.forEach((task) => renderTask(task)); // Rendera varje sparad uppgift vid sidladdning 
 });
 
 // Lägger till uppgift vid submit
@@ -76,9 +76,6 @@ function renderTask(task) {
       addPara.removeChild(removeYes);
       addPara.removeChild(removeNo);
     });
-    // taskContainer.removeChild(addPara);
-    // tasks = tasks.filter((t) => t.id !== task.id);
-    // saveTasks(); // Uppdatera localStorage efter borttagning
   });
 
   // "Färdig markera"-knapp
@@ -103,3 +100,8 @@ function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   console.log("Tasks saved to localStorage:", tasks); // Kontrollera vad som sparas
 }
+
+// if (tasks.length === 0){
+//   document.querySelector("#div-container").style.display = "none";
+// }
+

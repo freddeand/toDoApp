@@ -11,7 +11,7 @@ function generalId() {
 // Kontrollera om uppgifter finns sparade i localStorage när sidan laddas
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Loading tasks from localStorage:", tasks); // Kontrollera vad som hämtas
-  tasks.forEach(task => renderTask(task)); // Rendera varje sparad uppgift vid sidladdning
+  tasks.forEach((task) => renderTask(task)); // Rendera varje sparad uppgift vid sidladdning
 });
 
 // Lägger till uppgift vid submit
@@ -53,16 +53,38 @@ function renderTask(task) {
   let removeBtn = document.createElement("button");
   removeBtn.innerText = "Ta bort uppgift";
   removeBtn.style.margin = "10px";
-  removeBtn.addEventListener("click", function() {
-    taskContainer.removeChild(addPara);
-    tasks = tasks.filter((t) => t.id !== task.id);
-    saveTasks(); // Uppdatera localStorage efter borttagning
+  removeBtn.addEventListener("click", function () {
+    let removeYes = document.createElement("button");
+    let removeNo = document.createElement("button");
+    removeYes.innerText = "ja";
+    removeNo.innerText = "nej";
+    addPara.appendChild(removeYes);
+    addPara.appendChild(removeNo);
+
+    addPara.removeChild(removeBtn);
+    addPara.removeChild(readyBtn);
+
+    removeYes.addEventListener("click", function () {
+      taskContainer.removeChild(addPara);
+      tasks = tasks.filter((t) => t.id !== task.id);
+      saveTasks(); // Uppdatera localStorage efter borttagning
+    });
+    removeNo.addEventListener("click", function () {
+      addPara.innerText = task.description;
+      addPara.appendChild(removeBtn);
+      addPara.appendChild(readyBtn);
+      addPara.removeChild(removeYes);
+      addPara.removeChild(removeNo);
+    });
+    // taskContainer.removeChild(addPara);
+    // tasks = tasks.filter((t) => t.id !== task.id);
+    // saveTasks(); // Uppdatera localStorage efter borttagning
   });
 
   // "Färdig markera"-knapp
   let readyBtn = document.createElement("button");
   readyBtn.innerText = task.done ? "Markera som ej klar" : "Färdig markera";
-  readyBtn.addEventListener("click", function() {
+  readyBtn.addEventListener("click", function () {
     task.done = !task.done; // Ändra done-status
     addPara.classList.toggle("done", task.done); // Uppdatera klass i DOM
     addPara.classList.toggle("notDone", !task.done); // Uppdatera klass i DOM

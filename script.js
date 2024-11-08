@@ -1,5 +1,84 @@
 let tasks = [];
 
+let form = document.getElementById("formular");
+form.addEventListener("submit", function addTask(event) {
+  function generalId() {
+    return Math.floor(Math.random() * 10000);
+  }
+  event.preventDefault();
+  console.log("Adding task.")
+  
+  //ta från formulär
+  let inputText = document.getElementById("input");
+  if (inputText.value.trim() === "") {
+    console.log("Vänligen skriv in en beskrivning.");
+    return;
+  }
+  
+  console.log("inputtext.textcontent", inputText.value);
+  
+  const newTask = {
+    id: generalId(),
+    description: inputText.value,
+    done: false,
+  };
+  console.log("new task", newTask);
+  
+  
+  //stoppa i array
+  tasks.push(newTask);
+  console.log("taskarray", tasks);
+  
+  
+  //skapa <p> på sidan
+  let newDiv = document.getElementById("div-container");
+  let addPara = document.createElement("p"); 
+  
+  addPara.setAttribute("class","notDone");
+  addPara.innerText = newTask.description;
+  
+  
+  
+  let removeBtn = document.createElement("button");
+  removeBtn.addEventListener("click", function(){
+    removeBtn.innerText = "Ta bort uppgift";
+    newDiv.removeChild(addPara);
+  })
+  
+  
+  let readyBtn = document.createElement("button");
+  readyBtn.addEventListener("click", function(){
+    readyBtn.innerText = "Färdig markera";
+    addPara.classList.add("done");
+  })
+  
+  
+  newDiv.appendChild(addPara);
+  addPara.appendChild(removeBtn);
+  addPara.appendChild(readyBtn);
+  
+  
+  
+  
+  console.log( `${newTask.id}: ${newTask.description} ${
+    newTask.done ? ": KLAR" : ": INTE KLAR"
+  }\n`);
+
+})
+
+function removeTask(){}
+function markReady(){}
+
+
+
+
+
+
+
+
+
+
+// gammalt
 function showMenu() {
   let menu;
   let menuText =
@@ -41,9 +120,6 @@ function showMenu() {
   } while (menu !== 5 && menu !== 0);
 }
 
-function generalId() {
-  return Math.floor(Math.random() * 10000);
-}
 function addNew() {
   const taskDescription = prompt("Ange beskrivning för uppgiften: ");
 
@@ -59,7 +135,7 @@ function addNew() {
       description: taskDescription,
       done: false,
     };
-    tasks.push(newTask);
+    
     console.log("Uppgiften har lagts till.");
     alert("Uppgiften har lagts till.");
   } else {

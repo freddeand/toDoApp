@@ -1,21 +1,21 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // Hämtar uppgifter från localStorage eller tom array
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // Gets tasks from localStorage or empty array
 let form = document.getElementById("formular");
 let taskContainer = document.getElementById("div-container");
 let taskHeader = document.getElementById("task-header");
 
-// Funktion för att generera unikt ID
+// Function to generate an ID
 function generalId() {
   return Math.floor(Math.random() * 10000);
 }
 
-// Kontrollera om uppgifter finns sparade i localStorage när sidan laddas
+// Controlls if tasks are saved and stored in localStorage when the site loads
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Loading tasks from localStorage:", tasks);
   tasks.forEach((task) => renderTask(task));
   updateTaskHeader();
 });
 
-// Lägger till uppgift vid submit
+// Adds a task via submit
 form.addEventListener("submit", function addTask(event) {
   event.preventDefault();
   let inputText = document.getElementById("input");
@@ -34,19 +34,19 @@ form.addEventListener("submit", function addTask(event) {
   saveTasks();
   renderTask(newTask);
   updateTaskHeader();
-  // Rensa inmatningsfältet
+  // Clear the input field
   inputText.value = "";
 });
 
-// Funktion för att rendera en uppgift
+// Function to render tasks
 function renderTask(task) {
   let addPara = document.createElement("p");
-  
-  // Sätt klass baserat på om uppgiften är klar eller ej
+
+  // Add a class based on if the tasks are done or not
   addPara.setAttribute("class", task.done ? "done" : "notDone");
   addPara.innerText = task.description;
-  
-  // "Ta bort uppgift"-knapp
+
+  // Remove tasks button
   let removeBtn = document.createElement("button");
   removeBtn.innerText = "Ta bort uppgift";
   removeBtn.style.margin = "10px";
@@ -79,7 +79,7 @@ function renderTask(task) {
     });
   });
 
-  // "Färdig markera"-knapp
+  // "Mark as ready"-button
   let readyBtn = document.createElement("button");
   readyBtn.innerText = task.done ? "Markera som ej klar" : "Färdig markera";
   readyBtn.addEventListener("click", function () {
@@ -90,13 +90,13 @@ function renderTask(task) {
     saveTasks()
   });
 
-    // Lägg till knapparna och uppgiften i DOM
+    // Add buttons and tasks in DOM
     addPara.appendChild(removeBtn);
     addPara.appendChild(readyBtn);
     taskContainer.appendChild(addPara);
   }
 
-  // Funktion för att spara uppgifter till localStorage
+  // Function to save tasks using localStorage
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   console.log("Tasks saved to localStorage:", tasks);

@@ -2,6 +2,7 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // Gets tasks from 
 let form = document.getElementById("formular");
 let taskContainer = document.getElementById("div-container");
 let taskHeader = document.querySelector("#task-header");
+
 // Fredde
 // box for information.
 let divBox = document.getElementById("box");
@@ -36,12 +37,14 @@ form.addEventListener("submit", function addTask(event) {
     alert("Vänligen skriv in en beskrivning.");
     return;
   }
-
+  
+  // Fredde
   const newTask = {
     id: generalId(),
     description: inputText.value,
     done: false,
   };
+
 
   tasks.push(newTask);
   saveTasks();
@@ -91,6 +94,7 @@ function renderTask(task) {
       addPara.removeChild(removeNo);
     });
   });
+  
   // Benjamin
   // "Mark as ready"-button
   let readyBtn = document.createElement("button");

@@ -1,7 +1,7 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || []; // Gets tasks from localStorage or empty array
 let form = document.getElementById("formular");
 let taskContainer = document.getElementById("div-container");
-let taskHeader = document.getElementById("task-header");
+let taskHeader = document.querySelector("#task-header");
 
 // Function to generate an ID
 function generalId() {

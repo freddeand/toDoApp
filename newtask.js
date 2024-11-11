@@ -23,13 +23,13 @@ form.addEventListener("submit", function addTask(event) {
     alert("Vänligen skriv in en beskrivning.");
     return;
   }
- 
+
   const newTask = {
     id: generalId(),
     description: inputText.value,
     done: false,
   };
- 
+
   tasks.push(newTask);
   saveTasks();
   renderTask(newTask);
@@ -53,23 +53,23 @@ function renderTask(task) {
   removeBtn.addEventListener("click", function () {
     let removeYes = document.createElement("button");
     let removeNo = document.createElement("button");
-    
+
     removeYes.innerText = "ja";
     removeNo.innerText = "nej";
-    
+
     addPara.appendChild(removeYes);
     addPara.appendChild(removeNo);
-    
+
     addPara.removeChild(removeBtn);
     addPara.removeChild(readyBtn);
-    
+
     removeYes.addEventListener("click", function () {
       taskContainer.removeChild(addPara);
       tasks = tasks.filter((t) => t.id !== task.id);
       saveTasks();
       updateTaskHeader();
     });
-    
+
     removeNo.addEventListener("click", function () {
       addPara.innerText = task.description;
       addPara.appendChild(removeBtn);
@@ -87,26 +87,38 @@ function renderTask(task) {
     addPara.classList.toggle("done", task.done);
     addPara.classList.toggle("notDone", !task.done);
     readyBtn.innerText = task.done ? "Markera som ej klar" : "Färdig markera";
-    saveTasks()
+    saveTasks();
   });
 
-    // Add buttons and tasks in DOM
-    addPara.appendChild(removeBtn);
-    addPara.appendChild(readyBtn);
-    taskContainer.appendChild(addPara);
-  }
+  // Add buttons and tasks in DOM
+  addPara.appendChild(removeBtn);
+  addPara.appendChild(readyBtn);
+  taskContainer.appendChild(addPara);
+}
 
-  // Function to save tasks using localStorage
+// Function to save tasks using localStorage
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   console.log("Tasks saved to localStorage:", tasks);
 }
 
 // Function for "Alla uppgifter". Doesn't/does show when the task array is empty/has tasks
-function updateTaskHeader () {
+function updateTaskHeader() {
   if (tasks.length > 0) {
     taskHeader.style.display = "block";
   } else {
     taskHeader.style.display = "none";
   }
 }
+
+let divBox = document.getElementById("box");
+let divBtn = document.getElementById("toolTip");
+
+divBtn.addEventListener("click", function () {
+  if (divBox.innerText === "") {
+    divBox.innerText =
+      "Denna applikation hjälper dig att hantera dina uppgifter.\n Du kan lägga till, markera som färdiga och ta bort uppgifter.\n När uppgiften är färdig, markera den som klar!";
+  } else {
+    divBox.innerText = "";
+  }
+});
